@@ -1,5 +1,5 @@
 ## creative commons 
-See [license](http://creativecommons.org/licenses/by-nc-nd/4.0/) for more details.
+See [license](http://creativecommons.org/licenses/by-nc-nd/4.0/) for more details
 
 ![alt text](https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png "Creative Commons License BY-NC-ND")
 This work is licensed under a ["Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License"](http://creativecommons.org/licenses/by-nc-nd/4.0/)
