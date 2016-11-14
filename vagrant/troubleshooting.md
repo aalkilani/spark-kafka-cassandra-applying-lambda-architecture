@@ -37,3 +37,25 @@ This happens because you are telling Spark to discover the schema or some Parque
 val hdfsData = sqlContext.read.parquet(hdfsPath)
 ```
 You should wrap that statement with some exception handling based on what you're trying to do.
+
+#### Hadoop/HDFS/Yarn
+
+###### Connectivity problems when trying to run HDFS commmands
+
+If you get an error similar to this "ls: Call From lambda-pluralsight/127.0.1.1 to lambda-pluralsight:9000 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused"
+
+Then chances are that the Spark docker container isn't running or might have a problem.
+Try seeing if the container is running at all. You're going to be looking for a container with the name Spark-[version]
+```bash
+docker ps -a
+```
+
+Restart the container as needed
+```bash
+docker restart spark-[version]
+```
+Wait until all services are running before trying some other HDFS command. This should only take about 1 minute
+```bash
+while netstat -tln | awk '$4 ~ /:9000$/ {exit 1}'; do sleep 10; done
+```
+Free free to CTRL+C out of the previous statement if it takes more than a minute to exit on its own.
