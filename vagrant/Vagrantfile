@@ -68,11 +68,6 @@ Vagrant.configure("2") do |config|
 
   config.vm.hostname = "lambda-pluralsight"
 
-  if docker ps -a | grep -q 'ago'; then
-      docker ps -a | grep 'ago' | awk '{print $1}' | xargs -I container docker restart container
-    fi
-    
-  
   config.vm.provision "docker-images", type: "shell", run: "always", inline: <<-SHELLPRE
     docker restart zookeeper
     docker restart spark-1.6.1
