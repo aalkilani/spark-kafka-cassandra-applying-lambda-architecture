@@ -61,8 +61,6 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 22, host: 9922
 
   config.vm.network "forwarded_port", guest: 4040, host: 4040
-  config.vm.network "forwarded_port", guest: 111, host: 111
-  config.vm.network "forwarded_port", guest: 2049, host: 2049
 
   config.vm.box = "aalkilani/spark-kafka-cassandra-applying-lambda-architecture"
 
