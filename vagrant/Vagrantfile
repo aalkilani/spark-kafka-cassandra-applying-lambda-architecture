@@ -32,6 +32,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 8988, host: 8988
   config.vm.network "forwarded_port", guest: 8989, host: 8989
 
+  config.vm.network "forwarded_port", guest: 9000, host: 9000
   config.vm.network "forwarded_port", guest: 9092, host: 9092
   config.vm.network "forwarded_port", guest: 2181, host: 2181
   config.vm.network "forwarded_port", guest: 8082, host: 8082
@@ -52,25 +53,32 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 8042, host: 8042
   config.vm.network "forwarded_port", guest: 8088, host: 8088
   config.vm.network "forwarded_port", guest: 49707, host: 49707
-  config.vm.network "forwarded_port", guest: 50010, host: 50010
+  config.vm.network "forwarded_port", guest: 50010, host: 50011
   config.vm.network "forwarded_port", guest: 50020, host: 50020
   config.vm.network "forwarded_port", guest: 50070, host: 50070
   config.vm.network "forwarded_port", guest: 50075, host: 50075
   config.vm.network "forwarded_port", guest: 50090, host: 50090
-  config.vm.network "forwarded_port", guest: 22, host: 22
+  config.vm.network "forwarded_port", guest: 22, host: 9922
 
   config.vm.network "forwarded_port", guest: 4040, host: 4040
   config.vm.network "forwarded_port", guest: 111, host: 111
   config.vm.network "forwarded_port", guest: 2049, host: 2049
 
-  config.vm.box = "aalkilani/lambda-pluralsight"
+  config.vm.box = "aalkilani/spark-kafka-cassandra-applying-lambda-architecture"
 
   config.vm.hostname = "lambda-pluralsight"
-  
-  config.vm.provision "docker-images", type: "shell", run: "always", inline: <<-SHELLPRE
-    if docker ps -a | grep -q 'ago'; then
+
+  if docker ps -a | grep -q 'ago'; then
       docker ps -a | grep 'ago' | awk '{print $1}' | xargs -I container docker restart container
     fi
+    
+  
+  config.vm.provision "docker-images", type: "shell", run: "always", inline: <<-SHELLPRE
+    docker restart zookeeper
+    docker restart spark-1.6.1
+    docker restart cassandra
+    docker restart zeppelin
+    docker restart kafka
   SHELLPRE
 
   config.vm.provider "virtualbox" do |v|
