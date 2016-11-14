@@ -76,6 +76,15 @@ Vagrant.configure("2") do |config|
     docker restart kafka
   SHELLPRE
 
+  config.vm.provision "image-fixes", type: "shell", run: "once", inline: <<-FIXES
+    cat > /pluralsight/stayalive.sh << EOF
+    if docker ps -a | grep -q 'Exited'; then
+      docker ps -a | grep 'Exited' | awk '{print \\$1}' | xargs -I container docker restart container
+    fi
+EOF
+    chmod 755 /pluralsight/stayalive.sh
+  FIXES
+
   config.vm.provider "virtualbox" do |v|
     v.memory = 4096
     v.cpus = 2
