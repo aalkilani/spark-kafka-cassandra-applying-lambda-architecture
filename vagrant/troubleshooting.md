@@ -1,15 +1,26 @@
 ## Troubleshooting
 
-#### Cygwin
+### Cygwin
 
-###### Problems installing openssh
+##### Problems installing openssh
 Download the setup installer on the cygwin website: https://cygwin.com/setup-x86_64.exe
 Rename the installer to cygwinsetup.exe
 Move the installer to C:\tools\cygwin (or wherever you install cygwin)
 
-#### Vagrant and Virtualbox
+### Vagrant and Virtualbox
 
-###### Virtual machine behaving sporadically
+##### Vagrant was unable to mount VirtualBox shared folders
+Make sure you have VirtualBox Guest Additions installed.
+From cygwin on the host machine (outside of the VM) install the vagrant-vbguest plugin
+```bash
+vagrant plugin install vagrant-vbguest
+```
+Then reload and provision the VM
+```bash
+vagrant reload --provision
+```
+
+##### Virtual machine behaving sporadically
 From cygwin, navigate to the directory where this repository was cloned
 for example
 ```bash
@@ -21,16 +32,22 @@ vagrant reload
 ```
 This will apply default settings and attempt to restart components
 
-Still having problems or *vagrant up* get stuck? Try forcing a shutdown from Virtual box's menu and then vagrant up again.
+Still having problems? Try re-provisioning
+```bash
+vagrant reload --provision
+```
 
-#### Zeppelin
+##### vagrant up get stuck?
+Try forcing a shutdown from Virtual box's menu and then vagrant up again.
 
-###### Zeppelin shows disconnected
+### Zeppelin
+
+##### Zeppelin shows disconnected
 Try going to the Interpreter tab and click restart to restart the Spark interpreter
 
-#### Spark
+### Spark
 
-###### No predefined schema found, and no Parquet data files or summary files found under .. hdfs path
+##### No predefined schema found, and no Parquet data files or summary files found under .. hdfs path
 This happens because you are telling Spark to discover the schema or some Parquet data that no longer exists either because you manually deleted it or because the path is wrong or the data doesn't exist yet. In the course, you may run into this from this statement:
 
 ```scala
@@ -38,9 +55,9 @@ val hdfsData = sqlContext.read.parquet(hdfsPath)
 ```
 You should wrap that statement with some exception handling based on what you're trying to do.
 
-#### Hadoop/HDFS/Yarn
+### Hadoop/HDFS/Yarn
 
-###### Connectivity problems when trying to run HDFS commmands
+##### Connectivity problems when trying to run HDFS commmands
 
 If you get an error similar to this "ls: Call From lambda-pluralsight/127.0.1.1 to lambda-pluralsight:9000 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused"
 
