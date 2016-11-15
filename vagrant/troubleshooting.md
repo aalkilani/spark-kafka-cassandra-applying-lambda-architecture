@@ -11,6 +11,14 @@ Move the installer to C:\tools\cygwin (or wherever you install cygwin)
 
 ##### Vagrant was unable to mount VirtualBox shared folders
 Make sure you have VirtualBox Guest Additions installed.
+
+**On Windows**, this requires an additional step:
+From cygwin on the host machine (outside of the VM) setup Vagrant's home directory to something without spaces. For example to setup Vagrant's home directory to my "F:" drive on Windows under a "Boxes" folder, in Windows this would be "F:\Boxes"
+```bash
+export VAGRANT_HOME=/cygdrive/f/Boxes
+```
+
+Finally, **for all operating systems**, install the vagrant-vbguest plugin:
 From cygwin on the host machine (outside of the VM) install the vagrant-vbguest plugin
 ```bash
 vagrant plugin install vagrant-vbguest
