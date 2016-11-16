@@ -1,4 +1,4 @@
-# Applying the Lambda Architecture with Spark, Kafka, and Cassandra
+# [Applying the Lambda Architecture with Spark, Kafka, and Cassandra](https://www.pluralsight.com/courses/spark-kafka-cassandra-applying-lambda-architecture)
 
 This image accompanies the Spark course [Applying the Lambda Architecture with Spark, Kafka, and Cassandra](https://www.pluralsight.com/courses/spark-kafka-cassandra-applying-lambda-architecture) on [Pluralsight.com by Ahmad Alkilani](https://www.pluralsight.com/authors/ahmad-alkilani)
 
@@ -6,4 +6,4 @@ The [course](https://www.pluralsight.com/courses/spark-kafka-cassandra-applying-
 
 Please visit the course page for more details [https://www.pluralsight.com/courses/spark-kafka-cassandra-applying-lambda-architecture](https://www.pluralsight.com/courses/spark-kafka-cassandra-applying-lambda-architecture)
 
-#### Having problems? See [troubleshooting](https://github.com/aalkilani/spark-kafka-cassandra-applying-lambda-architecture/blob/master/vagrant/troubleshooting.md)
+##### Having problems? See [troubleshooting](https://github.com/aalkilani/spark-kafka-cassandra-applying-lambda-architecture/blob/master/vagrant/troubleshooting.md)
