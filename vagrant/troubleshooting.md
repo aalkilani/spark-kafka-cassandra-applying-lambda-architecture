@@ -9,16 +9,19 @@ Move the installer to C:\tools\cygwin (or wherever you install cygwin)
 
 ### Vagrant and Virtualbox
 
-##### Vagrant was unable to mount VirtualBox shared folders
+1. Vagrant was unable to mount VirtualBox shared folders
+
 Make sure you have VirtualBox Guest Additions installed.
 
-**On Windows**, this might require an additional step depending on where you installed Vagrant:
+###### On Windows
+This might require an additional step depending on where you installed Vagrant:
 From cygwin on the host machine (outside of the VM) setup Vagrant's home directory to something without spaces. For example to setup Vagrant's home directory to my "F:" drive on Windows under a "Boxes" folder, in Windows this would be "F:\Boxes"
 ```bash
 export VAGRANT_HOME=/cygdrive/f/Boxes
 ```
 
-Finally, **for all operating systems**, install the vagrant-vbguest plugin:
+###### For all operating systems (including Windows)
+Install the vagrant-vbguest plugin:
 From cygwin on the host machine (outside of the VM) install the vagrant-vbguest plugin
 ```bash
 vagrant plugin install vagrant-vbguest
@@ -28,14 +31,14 @@ Then reload and provision the VM
 vagrant reload --provision
 ```
 
-##### The box 'aalkilani/spark-kafka-cassandra-applying-lambda-architecture' could not be found
+2. The box 'aalkilani/spark-kafka-cassandra-applying-lambda-architecture' could not be found
 
 This applies to Mac OS X
 
 This is a problem with vagrant on OS X as documented here: mitchellh/vagrant#7970
 See this stackoverflow discussion for a workaround: http://stackoverflow.com/questions/40473943/vagrant-box-could-not-be-found-or-could-not-be-accessed-in-the-remote-catalog
 
-##### Virtual machine behaving sporadically
+3. Virtual machine behaving sporadically
 From cygwin, navigate to the directory where this repository was cloned
 for example
 ```bash
@@ -52,7 +55,7 @@ Still having problems? Try re-provisioning
 vagrant reload --provision
 ```
 
-##### vagrant up get stuck?
+4. vagrant up get stuck?
 Try forcing a shutdown from Virtual box's menu and then vagrant up again.
 
 ### Zeppelin
