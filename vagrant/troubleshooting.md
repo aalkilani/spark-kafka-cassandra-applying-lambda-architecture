@@ -9,7 +9,7 @@ Move the installer to C:\tools\cygwin (or wherever you install cygwin)
 
 ### Vagrant and Virtualbox
 
-1. Vagrant was unable to mount VirtualBox shared folders
+* Vagrant was unable to mount VirtualBox shared folders
 
 Make sure you have VirtualBox Guest Additions installed.
 
@@ -31,14 +31,14 @@ Then reload and provision the VM
 vagrant reload --provision
 ```
 
-2. The box 'aalkilani/spark-kafka-cassandra-applying-lambda-architecture' could not be found
+* The box 'aalkilani/spark-kafka-cassandra-applying-lambda-architecture' could not be found
 
 This applies to Mac OS X
 
 This is a problem with vagrant on OS X as documented here: mitchellh/vagrant#7970
 See this stackoverflow discussion for a workaround: http://stackoverflow.com/questions/40473943/vagrant-box-could-not-be-found-or-could-not-be-accessed-in-the-remote-catalog
 
-3. Virtual machine behaving sporadically
+* Virtual machine behaving sporadically
 From cygwin, navigate to the directory where this repository was cloned
 for example
 ```bash
@@ -55,7 +55,7 @@ Still having problems? Try re-provisioning
 vagrant reload --provision
 ```
 
-4. vagrant up get stuck?
+* vagrant up get stuck?
 Try forcing a shutdown from Virtual box's menu and then vagrant up again.
 
 ### Zeppelin
