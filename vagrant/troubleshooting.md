@@ -12,7 +12,7 @@ Move the installer to C:\tools\cygwin (or wherever you install cygwin)
 ##### Vagrant was unable to mount VirtualBox shared folders
 Make sure you have VirtualBox Guest Additions installed.
 
-**On Windows**, this requires an additional step:
+**On Windows**, this might require an additional step depending on where you installed Vagrant:
 From cygwin on the host machine (outside of the VM) setup Vagrant's home directory to something without spaces. For example to setup Vagrant's home directory to my "F:" drive on Windows under a "Boxes" folder, in Windows this would be "F:\Boxes"
 ```bash
 export VAGRANT_HOME=/cygdrive/f/Boxes
@@ -27,6 +27,13 @@ Then reload and provision the VM
 ```bash
 vagrant reload --provision
 ```
+
+##### The box 'aalkilani/spark-kafka-cassandra-applying-lambda-architecture' could not be found
+
+This applies to Mac OS X
+
+This is a problem with vagrant on OS X as documented here: mitchellh/vagrant#7970
+See this stackoverflow discussion for a workaround: http://stackoverflow.com/questions/40473943/vagrant-box-could-not-be-found-or-could-not-be-accessed-in-the-remote-catalog
 
 ##### Virtual machine behaving sporadically
 From cygwin, navigate to the directory where this repository was cloned
