@@ -10,6 +10,12 @@ fi
 # cleanup old spark container and setup new one if it doesn't exist
 if docker ps -a | grep -q 'spark-1.6.1'; then
   docker ps -a | grep 'spark-1.6.1' | awk '{print $1}' | xargs -I container docker rm -fv container
+  rm -rf /pluralsight/hadoop_conf/*
+  rm -rf /usr/local/hadoop
+  rm -rf /pluralsight/spark
+  docker cp -L spark-1.6.3:/usr/local/hadoop/etc/hadoop/ /pluralsight/hadoop_conf && ls /pluralsight/hadoop_conf | grep -q "hadoop$" && mv /pluralsight/hadoop_conf/hadoop/* /pluralsight/hadoop_conf/ && rm -rf /pluralsight/hadoop_conf/hadoop
+  docker cp -L spark-1.6.3:/usr/local/hadoop /usr/local/hadoop
+  docker cp spark-1.6.3:/usr/local/spark/ /pluralsight/
 fi
 docker ps -a | grep -q 'spark-1.6.3' || docker run -d --net=host --name=spark-1.6.3 -v /vagrant:/vagrant aalkilani/spark:1.6.3 -d
 
