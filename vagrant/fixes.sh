@@ -57,3 +57,11 @@ if docker ps -a | grep -q 'Exited'; then
   docker ps -a | grep 'Exited' | awk '{print $1}' | xargs -I container docker restart container
 fi
 EOF
+
+# spark-defaults
+grep -q -F 'spark.executor.memory' /pluralsight/spark/conf/spark-defaults.conf || cat >> /pluralsight/spark/conf/spark-defaults.conf << 'EOF'
+spark.driver.memory 1G
+spark.executor.memory 512M
+spark.yarn.executor.memoryOverhead 1024
+spark.executor.instances 1
+EOF
