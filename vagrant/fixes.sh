@@ -32,7 +32,7 @@ if [ "$BASH" ]; then
   fi
 fi
 
-mesg n
+tty -s && mesg n
 export JAVA_HOME=/usr/java/default
 export YARN_CONF_DIR=/pluralsight/hadoop_conf
 export HADOOP_CONF_DIR=/pluralsight/hadoop_conf
@@ -40,6 +40,9 @@ export HADOOP_PREFIX=/usr/local/hadoop
 export HADOOP_COMMON_HOME=$HADOOP_PREFIX
 export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_PREFIX/bin
 EOF
+
+# /home/vagrant/.profile fix tty message
+sed -i 's/^mesg n$/tty -s \&\& mesg n/g' /root/.profile
 
 # /home/vagrant/.profile
 grep -q -F 'JAVA_HOME=/usr/java/default' /home/vagrant/.profile || cat >> /home/vagrant/.profile << 'EOF'
