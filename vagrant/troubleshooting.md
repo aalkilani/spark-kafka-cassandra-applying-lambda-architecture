@@ -60,6 +60,18 @@ Try forcing a shutdown from Virtual box's menu and then vagrant up again.
 
 ### Zeppelin
 
+##### Dependencies for Zeppelin
+###### Applies to Spark Streaming Kafka Receiver: Demo and other Zeppelin demos
+
+Zeppelin 0.6.1 has updated its Spark version and that affects dependencies used in Zeppelin demos. If you simply see a vague Zeppelin Error or an error message similar to this one:
+`java.lang.NoClassDefFoundError: org/apache/spark/Logging`
+
+Then this is likely due to the dependencies used. As of the latest release of this Git repository and Docker images that accompany the course VM, the correct dependency versions to use are as follows:
+```
+org.apache.kafka:kafka_2.11:0.8.2.1 
+org.apache.spark:spark-streaming-kafka-0-8_2.11:2.0.2 
+```
+
 ##### Zeppelin shows disconnected
 Try going to the Interpreter tab and click restart to restart the Spark interpreter
 
