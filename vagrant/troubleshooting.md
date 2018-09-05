@@ -58,6 +58,11 @@ vagrant reload --provision
 * vagrant up get stuck?
 Try forcing a shutdown from Virtual box's menu and then vagrant up again.
 
+* "VT-x is not available"
+This applies to Windows. Make sure:
+  * In BIOS VT-x and VT-d are ON (some laptops may not have VT-x at all)
+  * Hyper-V in "Turn Windows feature on or off" is OFF
+
 ### Zeppelin
 
 ##### Dependencies for Zeppelin
